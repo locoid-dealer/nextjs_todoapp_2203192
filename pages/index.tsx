@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { useState } from "react";
 import { ChangeEvent } from "react";
+import TodoList from "../components/TodoList";
 
 const Home: NextPage = () => {
   const [text, setText] = useState<string>("");
@@ -31,14 +32,7 @@ const Home: NextPage = () => {
       </div>
       <div>
         <h1>Todoを確認しよう</h1>
-        <ul>
-          {todos.map((todo, index) => (
-            <li key={todo}>
-              {todo}
-              <button onClick={() => onClickDeleteTodo(index)}>削除</button>
-            </li>
-          ))}
-        </ul>
+        <TodoList todos={todos} onClickDeleteTodo={onClickDeleteTodo} />
       </div>
     </>
   );
