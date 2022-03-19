@@ -1,15 +1,9 @@
 import { useState } from "react";
-import { ChangeEvent } from "react";
 
 export const useTodoList = () => {
-  const [text, setText] = useState<string>("");
   const [todos, setTodos] = useState<string[]>([]);
 
-  const onChangeText = (event: ChangeEvent<HTMLInputElement>) => {
-    setText(event.target.value);
-  };
-
-  const addTodo = () => {
+  const addTodo = (text: string) => {
     const newTodos = [...todos];
     newTodos.push(text);
     setTodos(newTodos);
@@ -21,7 +15,7 @@ export const useTodoList = () => {
     setTodos(newTodos);
   };
 
-  return { text, todos, onChangeText, addTodo, deleteTodo };
+  return { todos, addTodo, deleteTodo };
 };
 
 export default useTodoList;

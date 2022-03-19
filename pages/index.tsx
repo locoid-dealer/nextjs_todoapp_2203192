@@ -1,16 +1,23 @@
 import type { NextPage } from "next";
+import { useState } from "react";
+import { ChangeEvent } from "react";
 import TodoList from "../components/TodoList";
-import useTodoList from "../hooks/useTodoList"
+import useTodoList from "../hooks/useTodoList";
 
 const Home: NextPage = () => {
-  const {text, todos, onChangeText, addTodo, deleteTodo} = useTodoList()
+  const { todos, addTodo, deleteTodo } = useTodoList();
+  const [text, setText] = useState<string>("");
+
+  const onChangeText = (event: ChangeEvent<HTMLInputElement>) => {
+    setText(event.target.value);
+  };
 
   const onClickAddTodo = () => {
-    addTodo()
+    addTodo(text);
   };
 
   const onClickDeleteTodo = (index: number) => {
-    deleteTodo(index)
+    deleteTodo(index);
   };
 
   return (
