@@ -17,20 +17,16 @@ const Home: NextPage = () => {
   };
 
   const onClickDeleteTodo = (index: number) => {
-    const newTodos = [...todos]
-    newTodos.splice(index, 1)
-    setTodos(newTodos)
-  }
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
 
   return (
     <>
       <div>
         <h1>Todoを追加しよう</h1>
-        <input
-          type="text"
-          value={text}
-          onChange={onChangeText}
-        />
+        <input type="text" value={text} onChange={onChangeText} />
         <button onClick={onClickAddTodo}>追加</button>
       </div>
       <div>
@@ -40,7 +36,7 @@ const Home: NextPage = () => {
             <li key={todo}>
               {todo}
               <button onClick={() => onClickDeleteTodo(index)}>削除</button>
-              </li>
+            </li>
           ))}
         </ul>
       </div>
