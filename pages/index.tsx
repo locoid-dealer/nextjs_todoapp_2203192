@@ -10,11 +10,17 @@ const Home: NextPage = () => {
     setText(event.target.value);
   };
 
-  const onClickTodos = () => {
+  const onClickAddTodo = () => {
     const newTodos = [...todos];
     newTodos.push(text);
     setTodos(newTodos);
   };
+
+  const onClickDeleteTodo = (index: number) => {
+    const newTodos = [...todos]
+    newTodos.splice(index, 1)
+    setTodos(newTodos)
+  }
 
   return (
     <>
@@ -25,13 +31,16 @@ const Home: NextPage = () => {
           value={text}
           onChange={(event) => onChangeText(event)}
         />
-        <button onClick={() => onClickTodos()}>追加</button>
+        <button onClick={() => onClickAddTodo()}>追加</button>
       </div>
       <div>
         <h1>Todoを確認しよう</h1>
         <ul>
-          {todos.map((todo) => (
-            <li key={todo}>{todo}</li>
+          {todos.map((todo, index) => (
+            <li key={todo}>
+              {todo}
+              <button onClick={() => onClickDeleteTodo(index)}>削除</button>
+              </li>
           ))}
         </ul>
       </div>
