@@ -29,9 +29,9 @@ const Home: NextPage = () => {
         <input
           type="text"
           value={text}
-          onChange={(event) => onChangeText(event)}
+          onChange={onChangeText}
         />
-        <button onClick={() => onClickAddTodo()}>追加</button>
+        <button onClick={onClickAddTodo}>追加</button>
       </div>
       <div>
         <h1>Todoを確認しよう</h1>
